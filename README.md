@@ -24,4 +24,6 @@ cabextract libdvdread4 libav-tools libavcodec-extra-54 libavformat-extra-54
 
 Esse script foi testado nas versões do Ubuntu 12.04, 13.10, 14.04 e 15.04 versão 64bits
 
+Testado também nas versões do Linux Mint 17 e 17.1
 
+Possivelmente você não encontrará grandes erros se a distribuição derivar do Ubuntu ;)
