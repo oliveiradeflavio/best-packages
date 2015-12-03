@@ -680,7 +680,7 @@ echo
 sobre()
 {
 clear
-	echo "O script surgiu nas minhas formatações e instalações do sistema Ubuntu e derivados. Para agilizar todo o processo de instalação de PPA's e programas padrões para usuários iniciantes. Foi daí que surgiu a idéia do script. Alguns programas foram sugestões de usuários e inscritos do meu canal no Youtube. Agradeço e eles por deixar um tempo para contribuir com esse script... Agradeço também a minha companheira Talita por colaborar também com esse script =D"
+	echo "O script surgiu nas minhas formatações e instalações do sistema Ubuntu e derivados. Para agilizar todo o processo de instalação de PPA's e programas padrões para usuários iniciantes. Foi daí que surgiu a idéia do script. Alguns programas foram sugestões de usuários e inscritos do meu canal no Youtube. Agradeço a eles por deixarem um tempo para contribuir para esse script... Agradeço também a minha companheira Talita por colaborar também com esse script =D"
 	echo
 	echo "Caso você queira deixar alguma modificação, envie para o seguinte email:"
 	echo "email: oliveiradeflavio@gmail.com"
