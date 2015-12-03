@@ -306,6 +306,7 @@ tail -f wget-log
 		chmod +x virtualbox64.run ; ./virtualbox64.run
 		sleep 3
 		vboxmanage extpack install ./Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack
+		adduser $SUDO_USER vboxusers
 	else
 		echo "Baixando o Virtualbox 32bits e a extensão para USB"
 		echo
@@ -318,6 +319,7 @@ tail -f wget-log
 		chmod +x virtualbox32.run ; ./virtualbox32.run
 		sleep 3
 		vboxmanage extpack install ./Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack
+		adduser $SUDO_USER vboxusers
 	fi
 fi
 sleep 3
