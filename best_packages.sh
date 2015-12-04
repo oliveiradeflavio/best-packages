@@ -556,6 +556,11 @@ if which -a prelink && which -a deborphan; then
 	echo "Removendo Pacotes Órfãos"
 	apt-get remove $(deborphan) -y ; apt-get autoremove -y
 	echo "--------------------------------------------"
+	echo "Removendo Arquivos (.bak, .tmp, ~) da pasta Home"
+	for i in *~ *.bak *.tmp; do
+		find $HOME -iname "$i" -exec rm -f {} \;
+	done
+	echo "--------------------------------------------"
 	echo "Atualizando as Entradas do GRUB"
 	update-grub
 	echo "--------------------------------------------"
