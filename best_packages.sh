@@ -337,7 +337,7 @@ echo
 echo "Spotify (serviço de música comercial em streaming)"
 echo ; sleep 2
 if which -a spotify 1>/dev/null 2>/dev/stdout; then
-	echo "Você ja possui o programa" ; sleep 2
+	echo "Você já possui o programa" ; sleep 2
 else
 	echo "Adicionando o Repositório do Spotify"
 	sleep 2	
