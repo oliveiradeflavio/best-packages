@@ -285,75 +285,76 @@ clear
 
 progr_extra()
 {
+clear
+echo
+	echo -e "\033[04;32mProgramas que serão instalados\033[0m"
+	echo -e "Virtualbox\nVirtualbox Extension Pack\nSpotify\nHandbrake\nQBittorrent\nKdenlive\nAnki\nAudacity"
+	
+	read -n1 -p "Deseja continuar com a instalação? s/n" -s escolha
+		if [[ $escolha == 's' ]]; then
+		
 cd /tmp/
+echo
 testaconexao
 clear
 echo
 echo "Virtualbox (programa para virtualização de sistemas)"
-echo
-if which -a virtualbox; then
-		echo "Você já possui o programa"
+echo ; sleep 2
+if which -a virtualbox 1>/dev/null 2>/dev/stdout; then
+		echo "Você já possui o programa" ; sleep 2
 else
 	if uname -m | grep '64' ; then
 		echo "Baixando o Virtualbox 64bits e a extensão para USB"
 		echo
 		wget -b http://download.virtualbox.org/virtualbox/5.0.10/VirtualBox-5.0.10-104061-Linux_amd64.run -O virtualbox64.run && 
-tail -f wget-log
+PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 		wget -b http://download.virtualbox.org/virtualbox/5.0.10/Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack && 
-tail -f wget-log
+PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 		clear
 		echo "Instalando ..."
+		sleep 2
 		chmod +x virtualbox64.run ; ./virtualbox64.run
 		sleep 3
 		vboxmanage extpack install ./Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack
-		adduser $SUDO_USER vboxusers
 	else
 		echo "Baixando o Virtualbox 32bits e a extensão para USB"
 		echo
 		wget -b http://download.virtualbox.org/virtualbox/5.0.10/VirtualBox-5.0.10-104061-Linux_x86.run -O virtualbox32.run && 
-tail -f wget-log
+PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 		wget -b http://download.virtualbox.org/virtualbox/5.0.10/Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack && 
-tail -f wget-log
+PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 		clear
 		echo "Instalando ..."
+		sleep 2
 		chmod +x virtualbox32.run ; ./virtualbox32.run
 		sleep 3
 		vboxmanage extpack install ./Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack
-		adduser $SUDO_USER vboxusers
 	fi
 fi
 sleep 3
 clear
 echo
 echo "Spotify (serviço de música comercial em streaming)"
-echo
-if which -a spotify; then
-	echo "Você ja possui o programa"
+echo ; sleep 2
+if which -a spotify 1>/dev/null 2>/dev/stdout; then
+	echo "Você ja possui o programa" ; sleep 2
 else
-	if uname -m | grep '64' ; then
-		echo "Baixando o Spotify 64bits ..."
-		echo
-		wget -b http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.17.75.g8f111100_amd64.deb 
--O spotify64.deb && tail -f wget-log
-		clear
-		echo "Instalando ..."
-		dpkg -i spotify64.deb ; apt-get install -f -y
-	else
-		echo "Baixando o Spotify 32bits ..."
-		echo
-		wget -b  http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.17.75.g8f111100_i386.deb 
--O spotify32.deb && tail -f wget-log
-		clear
-		echo "Instalando ..."
-		dpkg -i spotify32.deb ; apt-get install -f -y
-	fi
+	echo "Adicionando o Repositório do Spotify"
+	sleep 2	
+	sh -c "echo 'deb http://repository.spotify.com stable non-free' >> /etc/apt/sources.list"
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59 1>/dev/null 2>/dev/stdout
+	echo "Aguarde, atualizando a sources.list"
+	apt-get update 1>/dev/nul 2>/dev/stdout
+	echo "Instalando Spotify"
+	sleep 2;
+	apt-get install spotify-client -y --force-yes
 fi
 sleep 3
 clear
 echo
 echo "Handbrake (programa para converter vídeos)"
-echo
-	if which -a handbrake; then
+echo ; sleep 2
+	if which -a handbrake 1>/dev/null 2>/dev/stdout; then
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
@@ -363,8 +364,8 @@ sleep 3
 clear
 echo
 echo "QBittorrent (programa para baixar arquivos torrent)"
-echo
-	if which -a qbittorrent; then
+echo ; sleep 2
+	if which -a qbittorrent 1>/dev/null 2>/dev/stdout; then
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
@@ -374,8 +375,8 @@ sleep 3
 clear
 echo
 echo "Kdenlive (poderoso editor de vídeos)"
-echo
-	if which -a kdenlive; then
+echo ; sleep 2
+	if which -a kdenlive 1>/dev/null 2>/dev/stdout; then
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
@@ -387,8 +388,8 @@ sleep 3
 clear
 echo
 echo "Anki (programa extensível de aprendizado com cartões de memória)"
-echo
-	if which -a anki; then
+echo ; sleep 2
+	if which -a anki 1>/dev/null 2>/dev/stdout; then
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
@@ -398,13 +399,27 @@ sleep 3
 clear
 echo
 echo "Audacity (rápido editor de áudio multiplataforma)"
-echo
-	if which -a audacity; then
+echo ; sleep 2
+	if which -a audacity 1>/dev/null 2>/dev/stdout1>/dev/null 2>/dev/stdout; then
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
 		apt-get install audacity -y
 	fi
+elif [[ $escolha == 'n' ]]; then
+	echo 
+	echo "Voltando ao Menu Principal"
+	sleep 2 ; menu
+elif [[ $escolha != 's' ]] && [[ $escolha != 'n' ]]; then
+	echo
+	echo "Alternativas incorretas"
+	sleep 2 ; progr_extra
+else
+	echo "Finalizando script"
+	sleep 2 ; exit
+fi
+echo
+echo "Instalação Concluída"
 sleep 3
 echo
 	echo "m) Voltar ao Menu Principal"
@@ -556,11 +571,6 @@ if which -a prelink && which -a deborphan; then
 	echo "Removendo Pacotes Órfãos"
 	apt-get remove $(deborphan) -y ; apt-get autoremove -y
 	echo "--------------------------------------------"
-	echo "Removendo Arquivos (.bak, .tmp, ~) da pasta Home"
-	for i in *~ *.bak *.tmp; do
-		find $HOME -iname "$i" -exec rm -f {} \;
-	done
-	echo "--------------------------------------------"
 	echo "Atualizando as Entradas do GRUB"
 	update-grub
 	echo "--------------------------------------------"
@@ -685,7 +695,7 @@ echo
 sobre()
 {
 clear
-	echo "O script surgiu nas minhas formatações e instalações do sistema Ubuntu e derivados. Para agilizar todo o processo de instalação de PPA's e programas padrões para usuários iniciantes. Foi daí que surgiu a idéia do script. Alguns programas foram sugestões de usuários e inscritos do meu canal no Youtube. Agradeço a eles por deixarem um tempo para contribuir para esse script... Agradeço também a minha companheira Talita por colaborar também com esse script =D"
+	echo "O script surgiu nas minhas formatações e instalações do sistema Ubuntu e derivados. Para agilizar todo o processo de instalação de PPA's e programas padrões para usuários iniciantes. Foi daí que surgiu a idéia do script. Alguns programas foram sugestões de usuários e inscritos do meu canal no Youtube. Agradeço e eles por deixar um tempo para contribuir com esse script... Agradeço também a minha companheira Talita por colaborar também com esse script =D"
 	echo
 	echo "Caso você queira deixar alguma modificação, envie para o seguinte email:"
 	echo "email: oliveiradeflavio@gmail.com"
