@@ -128,7 +128,7 @@ apt-get update ; apt-get dist-upgrade -y
 clear
 	sleep 5
 	echo "Instalando Programas ..."
-apt-get install libreoffice google-chrome-stable ffmulticonverter simplescreenrecorder simplescreenrecorder-lib:i386 ubuntu-tweak vlc audacious bleachbit gimp wine1.7 ; sudo apt-get install -f -y ; oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+apt-get install libreoffice google-chrome-stable ffmulticonverter simplescreenrecorder simplescreenrecorder-lib:i386 ubuntu-tweak vlc audacious bleachbit gimp wine1.7 -y --force-yes ; sudo apt-get install -f -y ; oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 	echo
 clear
 	sleep 2
@@ -138,7 +138,7 @@ apt-get update ; apt-get dist-upgrade -y
 clear
 	sleep 2
 	echo "Instalando Pacote de Multimedia (Codecs)"
-apt-get install ubuntu-restricted-extras faac faad ffmpeg gstreamer0.10-ffmpeg flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools libavcodec-extra-54 libavformat-extra-54 easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 libxine1 libxine1-bin libxine1-ffmpeg libxine1-misc-plugins libxine1-plugins libxine1-x nautilus-script-audio-convert nautilus-scripts-manager tagtool -y
+apt-get install ubuntu-restricted-extras faac faad ffmpeg gstreamer0.10-ffmpeg flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools libavcodec-extra-54 libavformat-extra-54 easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 libxine1 libxine1-bin libxine1-ffmpeg libxine1-misc-plugins libxine1-plugins libxine1-x nautilus-script-audio-convert nautilus-scripts-manager tagtool -y --force-yes
 	echo
 /usr/share/doc/libdvdread4/install-css.sh
 	echo
@@ -231,7 +231,7 @@ apt-get update ; apt-get dist-upgrade -y
 clear
 	sleep 2
 	echo "Instalando Programas ..."
-apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenrecorder simplescreenrecorder-lib:i386 vlc audacious bleachbit gimp wine1.6 ; apt-get install -f -y ; oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenrecorder simplescreenrecorder-lib:i386 vlc audacious bleachbit gimp wine1.6 -y --force-yes ; apt-get install -f -y ; oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 	echo
 clear
 	sleep 2
@@ -241,7 +241,7 @@ apt-get update ; apt-get dist-upgrade -y
 clear
 	sleep 2
 	echo "Instalando Pacote de Multimedia (Codecs)"
-apt-get install ubuntu-restricted-extras faac faad ffmpeg flac icedax id3v2 lame libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 nautilus-script-audio-convert nautilus-scripts-manager tagtool browser-plugin-vlc quicktime-utils -y
+apt-get install ubuntu-restricted-extras faac faad ffmpeg flac icedax id3v2 lame libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 nautilus-script-audio-convert nautilus-scripts-manager tagtool browser-plugin-vlc quicktime-utils -y --force-yes
 	echo
 /usr/share/doc/libdvdread4/install-css.sh
 	echo
