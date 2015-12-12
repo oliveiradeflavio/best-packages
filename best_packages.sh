@@ -55,67 +55,67 @@ DIR=/etc/apt/sources.list.d/
 	echo "Verificando e Adicionando os PPA's para instalação"
 	echo
 if [ -e "$DIR libreoffice-ppa-trusty.list" ]; then
-	add-apt-repository ppa:libreoffice/ppa -y
-else
 	echo "Sistema já contém o PPA LIBREOFFICE"
 	sleep 1
+else
+	add-apt-repository ppa:libreoffice/ppa -y
 fi
 
 if [ -e "$DIR google-chrome.list" ]; then
-	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-	sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-else
 	echo "Sistema já contém o PPA Chrome"
 	sleep 1
+else
+	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+	sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 fi
 
 if [ -e "$DIR mc3man-trusty-media-trusty.list" ]; then
-	add-apt-repository ppa:mc3man/trusty-media -y
-else
 	echo "Sistema já contém o PPA MC3MAN(CODECS)"
 	sleep 1
+else
+	add-apt-repository ppa:mc3man/trusty-media -y
 fi
 
 if [ -e "$DIR ffmulticonverter-stable-trusty.list" ]; then
-	add-apt-repository ffmulticonverter/stable -y
-else
 	echo "Sistema já contém o PPA FFMULTICONVERTER"
 	sleep 1
+else
+	add-apt-repository ppa:ffmulticonverter/stable -y
 fi
 
 if [ -e "$DIR maarten-baert-simplescreenrecorder-trusty.list" ]; then
-	add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
-else
 	echo "Sistema já contém o PPA SIMPLESCREENRECORDER"
 	sleep 1
+else
+	add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
 fi
 
 if [ -e "$DIR webupd8team-java-trusty.list" ]; then
-	add-apt-repository ppa:webupd8team/java -y
-else
 	echo "Sistema já contém o PPA JAVA (WEB/JDK)"
 	sleep 1
+else
+	add-apt-repository ppa:webupd8team/java -y
 fi
 
 if [ -e "$DIR tualatrix-ppa-trusty.list" ]; then
-	add-apt-repository ppa:tualatrix/ppa -y
-else
 	echo "Sistema já contém o PPA UBUNTU TWEAK"
 	sleep 1
+else
+	add-apt-repository ppa:tualatrix/ppa -y
 fi
 
 if [ -e "$DIR otto-kesselgulasch-gimp-trusty.list" ]; then
-	add-apt-repository ppa:otto-kesselgulasch/gimp -y
-else
 	echo "Sistema já contém o PPA GIMP"
 	sleep 1
+else
+	add-apt-repository ppa:otto-kesselgulasch/gimp -y
 fi
 
 if [ -e "$DIR ubuntu-wine-ppa-trusty.list" ]; then
-	add-apt-repository ppa:ubuntu-wine/ppa -y
-else
 	echo "Sistema já contém o PPA WINE"
 	sleep 1
+else
+	add-apt-repository ppa:ubuntu-wine/ppa -y
 fi
 	echo
 clear
@@ -126,25 +126,19 @@ clear
 	echo "Atualizando Programas para versão mais recente"
 apt-get update ; apt-get dist-upgrade -y
 clear
-	sleep 2
+	sleep 5
 	echo "Instalando Programas ..."
-apt-get install libreoffice google-chrome-stable ffmulticonverter simplescreenrecorder simplescreenrecorder-lib:i386 ubuntu-tweak 
-vlc audacious bleachbit gimp wine1.7 oracle-java8-installer -y ; apt-get install -f -y ; 
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+apt-get install libreoffice google-chrome-stable ffmulticonverter simplescreenrecorder simplescreenrecorder-lib:i386 ubuntu-tweak vlc audacious bleachbit gimp wine1.7 ; sudo apt-get install -f -y ; oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 	echo
 clear
 	sleep 2
 	echo "Checando Novas Atualizações"
-apt-get update ; apt-get dist-upgrade -y ; apt-get install -f -y
+apt-get update ; apt-get dist-upgrade -y
 	echo
 clear
 	sleep 2
 	echo "Instalando Pacote de Multimedia (Codecs)"
-apt-get install ubuntu-restricted-extras faac faad ffmpeg gstreamer0.10-ffmpeg flac icedax id3v2 lame libflac++6 libjpeg-progs 
-libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj 
-p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools libavcodec-extra-54 
-libavformat-extra-54 easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 libxine1 libxine1-bin libxine1-ffmpeg 
-libxine1-misc-plugins libxine1-plugins libxine1-x nautilus-script-audio-convert nautilus-scripts-manager tagtool -y
+apt-get install ubuntu-restricted-extras faac faad ffmpeg gstreamer0.10-ffmpeg flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools libavcodec-extra-54 libavformat-extra-54 easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 libxine1 libxine1-bin libxine1-ffmpeg libxine1-misc-plugins libxine1-plugins libxine1-x nautilus-script-audio-convert nautilus-scripts-manager tagtool -y
 	echo
 /usr/share/doc/libdvdread4/install-css.sh
 	echo
@@ -184,46 +178,46 @@ DIR=/etc/apt/sources.list.d/
 	echo "Adicionando os PPA's para instalação"
 	echo
 if [ -e "$DIR libreoffice-ubuntu-ppa-wily.list" ]; then
-	add-apt-repository ppa:libreoffice/ppa -y
-else
 	echo "Sistema já contém o PPA LIBREOFFICE"
 	sleep 1
+else
+	add-apt-repository ppa:libreoffice/ppa -y
 fi
 
 if [ -e "$DIR google-chrome.list" ]; then
-	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-	sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-else
 	echo "Sistema já contém o PPA Chrome"
 	sleep 1
+else
+	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+	sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 fi
 
 if [ -e "$DIR maarten-baert-ubuntu-simplescreenrecorder-wily.list" ]; then
-	add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
-else
 	echo "Sistema já contém o PPA SIMPLESCREENRECORDER"
 	sleep 1
+else
+	add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
 fi
 
 if [ -e "$DIR webupd8team-ubuntu-java-wily.list" ]; then
-	add-apt-repository ppa:webupd8team/java -y
-else
 	echo "Sistema já contém o PPA JAVA (WEB E JDK)"
 	sleep 1
+else
+	add-apt-repository ppa:webupd8team/java -y
 fi
 
 if [ -e "$DIR otto-kesselgulasch-ubuntu-gimp-wily.list" ]; then
-	add-apt-repository ppa:otto-kesselgulasch/gimp -y
-else
 	echo "Sistema já contém o PPA GIMP"
 	sleep 1
+else
+	add-apt-repository ppa:otto-kesselgulasch/gimp -y
 fi
 
 if [ -e "$DIR ubuntu-wine-ubuntu-ppa-wily.list" ]; then
-	add-apt-repository ppa:ubuntu-wine/ppa -y
-else
 	echo "Sistema já contém o PPA WINE"
 	sleep 1
+else
+	add-apt-repository ppa:ubuntu-wine/ppa -y
 fi
 
 	echo
@@ -237,22 +231,17 @@ apt-get update ; apt-get dist-upgrade -y
 clear
 	sleep 2
 	echo "Instalando Programas ..."
-apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenrecorder simplescreenrecorder-lib:i386 vlc audacious 
-bleachbit gimp wine1.6 oracle-java8-installer -y ; apt-get install -f -y
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenrecorder simplescreenrecorder-lib:i386 vlc audacious bleachbit gimp wine1.6 ; apt-get install -f -y ; oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 	echo
 clear
 	sleep 2
 	echo "Checando Novas Atualizações"
-apt-get update ; apt-get dist-upgrade -y ; apt-get install -f -y
+apt-get update ; apt-get dist-upgrade -y 
 	echo
 clear
 	sleep 2
 	echo "Instalando Pacote de Multimedia (Codecs)"
-apt-get install ubuntu-restricted-extras faac faad ffmpeg flac icedax id3v2 lame libjpeg-progs mjpegtools mpeg2dec mpeg3-utils 
-mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree 
-sharutils uudeview mpack cabextract libdvdread4 libav-tools easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 
-libopusfile0 nautilus-script-audio-convert nautilus-scripts-manager tagtool browser-plugin-vlc quicktime-utils -y
+apt-get install ubuntu-restricted-extras faac faad ffmpeg flac icedax id3v2 lame libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 nautilus-script-audio-convert nautilus-scripts-manager tagtool browser-plugin-vlc quicktime-utils -y
 	echo
 /usr/share/doc/libdvdread4/install-css.sh
 	echo
@@ -380,7 +369,7 @@ echo ; sleep 2
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
-		apt-add-repository ppa:sunab/kdenlive-release -y
+		apt-add-repository ppa:sunab/kdenlive-svn -y
 		apt-get update 1>/dev/null 2>/dev/stdout
 		apt-get install kdenlive kde-workspace-data kde-runtime -y
 	fi
@@ -473,9 +462,9 @@ if [[ $verificadistro == "DISTRIB_ID=Ubuntu" ]] && [[ $verificaversao == "DISTRI
 				verifica
 				;;
 		esac
-elif [[ $verificadistro == "DISTRIB_ID=LinuxMint" ]] && [[ $verificaversao == "DISTRIB_RELEASE=17.2" ]]; then
+elif [[ $verificadistro == "DISTRIB_ID=LinuxMint" ]] && [[ "$verificaversao" == "DISTRIB_RELEASE=17.3" ]]; then
 	echo
-	echo "Distribuição Linux Mint 17.2 Rafaela"
+	echo "Distribuição Linux Mint 17.3 Rosa"
 	echo
 	echo -e "\033[04;32mProgramas que serão instalados\033[0m"
 	echo -e "Libreoffice (Versão mais nova)\nGoogle Chrome\nJava (Web/JDK)\nFF Multi Converter\nSimple Screen Recorder\nUbuntu-Tweak\nVLC Player\nAudacious Player\nBleachbit\nGimp\nwine1.7\nCodecs (muito codecs =D)\n"
@@ -628,49 +617,64 @@ otimizasistema()
 {
 clear
 echo
+memfree=$(grep "memfree = 50" /etc/preload.conf)
+memcached=$(grep "memcached = 0" /etc/preload.conf)
+processes=$(grep "processes = 30" /etc/preload.conf)
+prelink=$(grep "PRELINKING=unknown" /etc/default/prelink)
+
 echo "Verificando Sistema ... "
-if which -a preload && which -a prelink 1>/dev/null 2>/dev/stdout; then
-	echo
-	echo "Diminuindo a Prioridade da memória SWAP (área de troca)"
-	verifica=$(grep "vm.swappiness=10" /etc/sysctl.conf)
-		if [[ $verifica == "vm.swappiness=10" ]]; then
-			echo "Otimização já adicionada anteriormente."
+if which -a prelink 1>/dev/null 2>/dev/stdout && which -a preload 1>/dev/null 2>/dev/stdout; then
+		echo
+		echo "Configurando o PRELOAD"
+		if [[ $memfree == "memfree = 90" ]];then
+			echo "configurando..."
+			sed -i 's/memfree = 50/memfree = 90/g' /etc/preload.conf
+
+		elif [[ $memcached == "memcached = 35" ]]; then
+			echo "configurando..."
+			sed -i 's/memcached = 0/memcached = 35/g' /etc/preload.conf
+
+		elif [[ $processes == "processes = 50" ]]; then
+			echo "configurando..."
+			sed -i 's/processes = 30/processes = 50/g' /etc/preload.conf
+
 		else
-			echo "adicionando ..."
-			/bin/su -c "echo 'vm.swappiness=10' >> /etc/sysctl.conf"
+			echo "Não há nada para ser configurado"
+			echo "Isso porque já foi configurado anteriomente"
 		fi
-	echo
-	echo "Configurando o Prelink e Preload"
-	verifica=$(grep "PRELINKING=unknown" /etc/default/prelink)
-		if [[ $verifica == "PRELINKING=unknown" ]]; then
-			echo "Otimização já adicionada anteriormente."
-		else
+		echo
+		echo "Ativando o PRELINK"
+		if [[ $prelink == "PRELINKING=unknown" ]]; then
 			echo "adicionando ..."
 			sed -i 's/unknown/yes/g' /etc/default/prelink
-		fi
-else
-	clear
-	echo -e "Você precisa instalar dois programas\n para continuar com a otimização."
-	read -p "Deseja instalar o Prelink e o Preload? s/n: " -n1 escolha
-	case $escolha in
-		s|S) echo
-			testaconexao
-			apt-get install prelink preload -y
-			limpeza
-			;;
-		n|N) echo
-			echo Voltando para o Menu Principal ...
-			sleep 1
-			menu
-			;;
-		*) echo
-			echo Alternativas incorretas ... Voltando ao Menu Principal!!!
-			sleep 1
-			menu
-			;;
-	esac
 
-fi
+		else
+			echo "Otimização já adicionada anteriormente."
+					
+		fi
+	else
+		clear
+		echo -e "Você precisa instalar dois programas\n para continuar com a otimização."
+		read -p "Deseja instalar o Prelink e o Preload? s/n: " -n1 escolha
+			case $escolha in
+				s|S) echo
+				     	apt-get install prelink preload -y 1>/dev/null 2>/dev/stdout
+				     	;;
+				n|N) echo
+				     	echo Voltando ao Menu Principal. Nada a ser feito
+					sleep 2
+					exit
+					;;
+				*) echo
+					echo Alternativas incorretas!
+					sleep 2
+					optimize
+					;;
+			esac
+	fi
+	echo
+	echo "Otimização Concluída"
+	sleep 1 
 echo
 	echo "m) Voltar ao Menu Principal"
 	echo "s) Sair do script"
