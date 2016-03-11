@@ -10,9 +10,15 @@
 
 if [[ `id -u` -ne 0 ]]; then
 	echo
-		echo "Você precisa ter poderes administrativos (root)"
-		echo "O script está sendo finalizado ..."
-		sleep 4
+	zenity --info --text="Você precisa ter poderes administrativos (root)
+
+	Execute pelo Terminal:
+	sudo ./best_packages.sh" && echo $?
+	if [ $? -eq 1 ]; then
+			exit 1
+	fi
+	exit 0
+fi
 		exit
 fi
 
