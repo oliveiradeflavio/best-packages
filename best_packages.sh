@@ -128,7 +128,7 @@ apt-get update ; apt-get dist-upgrade -y
 clear
 	sleep 5
 	echo "Instalando Programas ..."
-apt-get install libreoffice google-chrome-stable ffmulticonverter simplescreenrecorder simplescreenrecorder-lib:i386 ubuntu-tweak vlc audacious bleachbit gimp wine1.7 -y --force-yes ; sudo apt-get install -f -y ; oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+apt-get install libreoffice google-chrome-stable ffmulticonverter simplescreenrecorder simplescreenrecorder-lib:i386 ubuntu-tweak vlc audacious bleachbit gimp wine1.7 -y --force-yes && oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 	echo
 clear
 	sleep 2
@@ -231,12 +231,12 @@ apt-get update ; apt-get dist-upgrade -y
 clear
 	sleep 2
 	echo "Instalando Programas ..."
-apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenrecorder simplescreenrecorder-lib:i386 vlc audacious bleachbit gimp wine1.6 -y --force-yes ; apt-get install -f -y ; oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenrecorder simplescreenrecorder-lib:i386 vlc audacious bleachbit gimp wine1.6 -y --force-yes && oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 	echo
 clear
 	sleep 2
 	echo "Checando Novas Atualizações"
-apt-get update ; apt-get dist-upgrade -y 
+apt-get update ; apt-get dist-upgrade -y
 	echo
 clear
 	sleep 2
@@ -278,10 +278,10 @@ clear
 echo
 	echo -e "\033[04;32mProgramas que serão instalados\033[0m"
 	echo -e "Virtualbox\nVirtualbox Extension Pack\nSpotify\nHandbrake\nQBittorrent\nKdenlive\nAnki\nAudacity"
-	
+
 	read -n1 -p "Deseja continuar com a instalação? s/n" -s escolha
 		if [[ $escolha == 's' ]]; then
-		
+
 cd /tmp/
 echo
 testaconexao
@@ -295,29 +295,29 @@ else
 	if uname -m | grep '64' ; then
 		echo "Baixando o Virtualbox 64bits e a extensão para USB"
 		echo
-		wget -b http://download.virtualbox.org/virtualbox/5.0.10/VirtualBox-5.0.10-104061-Linux_amd64.run -O virtualbox64.run && 
+		wget -b http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-Linux_amd64.run -O virtualbox64.run &&
 PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
-		wget -b http://download.virtualbox.org/virtualbox/5.0.10/Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack && 
+		wget -b http://download.virtualbox.org/virtualbox/5.0.16/Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack	 &&
 PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 		clear
 		echo "Instalando ..."
 		sleep 2
 		chmod +x virtualbox64.run ; ./virtualbox64.run
 		sleep 3
-		vboxmanage extpack install ./Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack
+		vboxmanage extpack install ./Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack
 	else
 		echo "Baixando o Virtualbox 32bits e a extensão para USB"
 		echo
-		wget -b http://download.virtualbox.org/virtualbox/5.0.10/VirtualBox-5.0.10-104061-Linux_x86.run -O virtualbox32.run && 
+		wget -b http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-Linux_x86.run -O virtualbox32.run &&
 PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
-		wget -b http://download.virtualbox.org/virtualbox/5.0.10/Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack && 
+		wget -b http://download.virtualbox.org/virtualbox/5.0.16/Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack &&
 PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 		clear
 		echo "Instalando ..."
 		sleep 2
 		chmod +x virtualbox32.run ; ./virtualbox32.run
 		sleep 3
-		vboxmanage extpack install ./Oracle_VM_VirtualBox_Extension_Pack-5.0.10-104061.vbox-extpack
+		vboxmanage extpack install ./Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack
 	fi
 fi
 sleep 3
@@ -329,7 +329,7 @@ if which -a spotify 1>/dev/null 2>/dev/stdout; then
 	echo "Você já possui o programa" ; sleep 2
 else
 	echo "Adicionando o Repositório do Spotify"
-	sleep 2	
+	sleep 2
 	sh -c "echo 'deb http://repository.spotify.com stable non-free' >> /etc/apt/sources.list"
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59 1>/dev/null 2>/dev/stdout
 	echo "Aguarde, atualizando a sources.list"
@@ -396,7 +396,7 @@ echo ; sleep 2
 		apt-get install audacity -y
 	fi
 elif [[ $escolha == 'n' ]]; then
-	echo 
+	echo
 	echo "Voltando ao Menu Principal"
 	sleep 2 ; menu
 elif [[ $escolha != 's' ]] && [[ $escolha != 'n' ]]; then
@@ -560,6 +560,11 @@ if which -a prelink && which -a deborphan; then
 	echo "Removendo Pacotes Órfãos"
 	apt-get remove $(deborphan) -y ; apt-get autoremove -y
 	echo "--------------------------------------------"
+	echo "Removendo Arquivos (.bak, ~, .tmp) da pasta Home"
+	for i in *~ *.bak *.tmp; do
+		find $HOME -iname "$i" -exec rm -f {} \;
+	done
+	echo "--------------------------------------------"
 	echo "Atualizando as Entradas do GRUB"
 	update-grub
 	echo "--------------------------------------------"
@@ -650,7 +655,7 @@ if which -a prelink 1>/dev/null 2>/dev/stdout && which -a preload 1>/dev/null 2>
 
 		else
 			echo "Otimização já adicionada anteriormente."
-					
+
 		fi
 	else
 		clear
@@ -674,7 +679,7 @@ if which -a prelink 1>/dev/null 2>/dev/stdout && which -a preload 1>/dev/null 2>
 	fi
 	echo
 	echo "Otimização Concluída"
-	sleep 1 
+	sleep 1
 echo
 	echo "m) Voltar ao Menu Principal"
 	echo "s) Sair do script"
