@@ -29,6 +29,11 @@ else
 	apt-get install pv -y 1>/dev/null 2>/dev/stdout
 fi
 
+verde="\033[1;32m"
+azul="\033[1;34m"
+branco="\033[0;37m"
+NORMAL="\033[m"
+
 testaconexao()
 {
 echo "Aguarde!!! Verificando conexão com a internet"
@@ -749,19 +754,23 @@ read -n1 -p "Escolha as opções acima. m/s" -s escolha
 menu()
 {
 clear
-	echo -e "\033[01;31mSEJA BEM VINDO ...\033[0m\n\nMENU PRINCIPAL"
+	echo "######################################"
+	echo -e " \033[01;31mSEJA BEM VINDO...\033[0m	\n
+	\033[01;31mMENU PRINCIPAL\033[0m  "
+	echo "######################################"
 	echo
-	echo "i) Adicionar PPA e Instalar os Programas"
 	echo
-	echo "e) Instalar programas extras (contribuições de usuários)"
+	echo -e "${azul}i)${verde} Adicionar PPA e Instalar os Programas${NORMAL}"
 	echo
-	echo "l) Excluir Arquivos que não estão sendo utilizados (limpeza)"
+	echo -e "${azul}e)${verde} Instalar programas extras (contribuições de usuários)${NORMAL}"
 	echo
-	echo "o) Otimização do Sistema (SWAP, Prelink e Preload)"
+	echo -e "${azul}l)${verde} Excluir Arquivos que não estão sendo utilizados (limpeza)${NORMAL}"
 	echo
-	echo "c) Conhecer o desenvolvedor e o propósito desse script"
+	echo -e "${azul}o)${verde} Otimização do Sistema (SWAP, Prelink e Preload)${NORMAL}"
 	echo
-	echo "s) Sair"
+	echo -e "${azul}c)${verde} Conhecer o desenvolvedor e o propósito desse script${NORMAL}"
+	echo
+	echo -e "${azul}s)${verde} Sair${NORMAL}"
 	echo
 	read -p "Selecione o que deseja ser feito: " -n1 -s escolha
 case $escolha in
@@ -782,7 +791,6 @@ case $escolha in
 		;;
 	s|S) echo
 		echo Saindo ...
-		sleep 1
 		exit
 		;;
 	*) echo
