@@ -19,7 +19,14 @@ if [[ `id -u` -ne 0 ]]; then
 	fi
 	exit 0
 fi
-		exit
+
+#Verificando se o pacote 'pv' está instalado
+#Esse pacote apenas irá mostrar uma barra de progresso nos menus de instalação
+if which -a pv 1>/dev/null 2>/dev/stdout ; then
+	echo
+else
+ echo
+	apt-get install pv -y 1>/dev/null 2>/dev/stdout
 fi
 
 testaconexao()
@@ -130,7 +137,7 @@ clear
 clear
 	echo "Atualizando a Lista de Programas (/etc/apt/sources.list)"
 	echo "Atualizando Programas para versão mais recente"
-apt-get update ; apt-get dist-upgrade -y
+apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
 clear
 	sleep 5
 	echo "Instalando Programas ..."
@@ -139,7 +146,7 @@ apt-get install libreoffice google-chrome-stable ffmulticonverter simplescreenre
 clear
 	sleep 2
 	echo "Checando Novas Atualizações"
-apt-get update ; apt-get dist-upgrade -y
+apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
 	echo
 clear
 	sleep 2
@@ -233,7 +240,7 @@ clear
 clear
 	echo "Atualizando a Lista de Programas (/etc/apt/sources.list)"
 	echo "Atualizando Programas para versão mais recente"
-apt-get update ; apt-get dist-upgrade -y
+apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
 clear
 	sleep 2
 	echo "Instalando Programas ..."
@@ -242,7 +249,7 @@ apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenre
 clear
 	sleep 2
 	echo "Checando Novas Atualizações"
-apt-get update ; apt-get dist-upgrade -y
+apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
 	echo
 clear
 	sleep 2
@@ -342,7 +349,7 @@ else
 	apt-get update 1>/dev/nul 2>/dev/stdout
 	echo "Instalando Spotify"
 	sleep 2;
-	apt-get install spotify-client -y --force-yes
+	apt-get install spotify-client -y --force-yes | pv -W > /dev/null
 fi
 sleep 3
 clear
@@ -353,7 +360,7 @@ echo ; sleep 2
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
-		apt-get install handbrake -y
+		apt-get install handbrake -y | pv -W > /dev/null
 	fi
 sleep 3
 clear
@@ -364,7 +371,7 @@ echo ; sleep 2
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
-		apt-get install qbittorrent -y
+		apt-get install qbittorrent -y | pv -W > /dev/null
 	fi
 sleep 3
 clear
@@ -377,7 +384,7 @@ echo ; sleep 2
 		echo "Instalando ..."
 		apt-add-repository ppa:sunab/kdenlive-svn -y
 		apt-get update 1>/dev/null 2>/dev/stdout
-		apt-get install kdenlive kde-workspace-data kde-runtime -y
+		apt-get install kdenlive kde-workspace-data kde-runtime -y | pv -W > /dev/null
 	fi
 sleep 3
 clear
@@ -388,18 +395,18 @@ echo ; sleep 2
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
-		apt-get install anki -y
+		apt-get install anki -y | pv -W > /dev/null
 	fi
 sleep 3
 clear
 echo
 echo "Audacity (rápido editor de áudio multiplataforma)"
 echo ; sleep 2
-	if which -a audacity 1>/dev/null 2>/dev/stdout1>/dev/null 2>/dev/stdout; then
+	if which -a audacity 1>/dev/null 2>/dev/stdout; then
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
-		apt-get install audacity -y
+		apt-get install audacity -y | pv -W > /dev/null
 	fi
 elif [[ $escolha == 'n' ]]; then
 	echo
@@ -575,7 +582,7 @@ if which -a prelink && which -a deborphan; then
 	update-grub
 	echo "--------------------------------------------"
 	echo "Otimizando as Bibliotecas dos Programas"
-	/etc/cron.daily/prelink
+	/etc/cron.daily/prelink | pv -W > /dev/null
 	echo "--------------------------------------------"
 	clear
 	echo "Limpeza Concluída ... "
