@@ -187,83 +187,80 @@ clear
 		esac
 }
 
-#ppa's e programas compatíveis com o Ubuntu 15.10
-ubuntu1510()
+ubuntu1604()
 {
-clear
-DIR=/etc/apt/sources.list.d/
+	clear
+	DIR=/etc/apt/sources.list.d/
 
-	echo "Adicionando os PPA's para instalação"
+		echo "Adicionando os PPA's para instalação"
+		echo
+	if [ -e "$DIR libreoffice-ubuntu-libreoffice-5-1-xenial.list" ]; then
+		echo "Sistema já contém o PPA LIBREOFFICE"
+		sleep 1
+	else
+		add-apt-repository ppa:libreoffice/ppa -y
+	fi
+
+	if [ -e "$DIR google-chrome.list" ]; then
+		echo "Sistema já contém o PPA Chrome"
+		sleep 1
+	else
+		wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+		sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+	fi
+
+	if [ -e "$DIR maarten-baert-ubuntu-simplescreenrecorder-xenial.list" ]; then
+		echo "Sistema já contém o PPA SIMPLESCREENRECORDER"
+		sleep 1
+	else
+		add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
+	fi
+
+	if [ -e "$DIR webupd8team-ubuntu-java-xenial.list" ]; then
+		echo "Sistema já contém o PPA JAVA (WEB E JDK)"
+		sleep 1
+	else
+		add-apt-repository ppa:webupd8team/java -y
+	fi
+
+	if [ -e "$DIR otto-kesselgulasch-ubuntu-gimp-xenial.list" ]; then
+		echo "Sistema já contém o PPA GIMP"
+		sleep 1
+	else
+		add-apt-repository ppa:otto-kesselgulasch/gimp -y
+	fi
+
+	if [ -e "$DIR ubuntu-wine-ubuntu-ppa-xenial.list" ]; then
+		echo "Sistema já contém o PPA WINE"
+		sleep 1
+	else
+		add-apt-repository ppa:ubuntu-wine/ppa -y
+	fi
+
 	echo
-if [ -e "$DIR libreoffice-ubuntu-ppa-wily.list" ]; then
-	echo "Sistema já contém o PPA LIBREOFFICE"
-	sleep 1
-else
-	add-apt-repository ppa:libreoffice/ppa -y
-fi
-
-if [ -e "$DIR google-chrome.list" ]; then
-	echo "Sistema já contém o PPA Chrome"
-	sleep 1
-else
-	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-	sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-fi
-
-if [ -e "$DIR maarten-baert-ubuntu-simplescreenrecorder-wily.list" ]; then
-	echo "Sistema já contém o PPA SIMPLESCREENRECORDER"
-	sleep 1
-else
-	add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
-fi
-
-if [ -e "$DIR webupd8team-ubuntu-java-wily.list" ]; then
-	echo "Sistema já contém o PPA JAVA (WEB E JDK)"
-	sleep 1
-else
-	add-apt-repository ppa:webupd8team/java -y
-fi
-
-if [ -e "$DIR otto-kesselgulasch-ubuntu-gimp-wily.list" ]; then
-	echo "Sistema já contém o PPA GIMP"
-	sleep 1
-else
-	add-apt-repository ppa:otto-kesselgulasch/gimp -y
-fi
-
-if [ -e "$DIR ubuntu-wine-ubuntu-ppa-wily.list" ]; then
-	echo "Sistema já contém o PPA WINE"
-	sleep 1
-else
-	add-apt-repository ppa:ubuntu-wine/ppa -y
-fi
-
-	echo
-clear
+	clear
 	echo "PPA's adicionados"
 	sleep 5
-clear
+	clear
 	echo "Atualizando a Lista de Programas (/etc/apt/sources.list)"
 	echo "Atualizando Programas para versão mais recente"
-apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
-clear
+	apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
+	clear
 	sleep 2
 	echo "Instalando Programas ..."
-apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenrecorder simplescreenrecorder-lib:i386 vlc audacious bleachbit gimp wine1.6 -y --force-yes && oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+	apt-get install libreoffice google-chrome-stable unity-tweak-tool simplescreenrecorder simplescreenrecorder-lib:i386 vlc audacious bleachbit gimp wine1.8 -y --force-yes && oracle-java8-installer -y ; echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 	echo
-clear
+	clear
 	sleep 2
 	echo "Checando Novas Atualizações"
-apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
+	apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
 	echo
-clear
+	clear
 	sleep 2
 	echo "Instalando Pacote de Multimedia (Codecs)"
-apt-get install ubuntu-restricted-extras faac faad ffmpeg flac icedax id3v2 lame libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 nautilus-script-audio-convert nautilus-scripts-manager tagtool browser-plugin-vlc quicktime-utils -y --force-yes
+	apt-get install ubuntu-restricted-extras faac faad ffmpeg flac icedax id3v2 lame libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 browser-plugin-vlc quicktime-utils -y --force-yes
 	echo
-/usr/share/doc/libdvdread4/install-css.sh
-	echo
-clear
+	clear
 	sleep 3
 	echo "Instalação Terminada"
 	echo "Recomendável que você reinicie seu sistema"
@@ -460,7 +457,7 @@ if [[ $verificadistro == "DISTRIB_ID=Ubuntu" ]] && [[ $verificaversao == "DISTRI
 	echo "Distribuição Ubuntu 14.04 Trusty Tahr"
 	echo
 	echo -e "\033[04;32mProgramas que serão instalados\033[0m"
-	echo -e "Libreoffice (Versão mais nova)\nGoogle Chrome\nJava (Web/JDK)\nFF Multi Converter\nSimple Screen Recorder\nUbuntu-Tweak\nVLC Player\nAudacious Player\nBleachbit\nGimp\nwine1.7\nCodecs (muito codecs =D)\n"
+	echo -e "Libreoffice 5.0\nGoogle Chrome\nJava (Web/JDK)\nFF Multi Converter\nSimple Screen Recorder\nUbuntu-Tweak\nVLC Player\nAudacious Player\nBleachbit\nGimp\nwine1.7\nCodecs (muito codecs =D)\n"
 	echo
 	sleep 3
 
@@ -505,12 +502,12 @@ elif [[ $verificadistro == "DISTRIB_ID=LinuxMint" ]] && [[ "$verificaversao" == 
 				verifica
 				;;
 		esac
-elif [[ $verificadistro == "DISTRIB_ID=Ubuntu" ]] && [[ $verificaversao == "DISTRIB_RELEASE=15.10" ]]; then
+elif [[ $verificadistro == "DISTRIB_ID=Ubuntu" ]] && [[ $verificaversao == "DISTRIB_RELEASE=16.04" ]]; then
 	echo
-	echo "Distribuição Ubuntu 15.10 Wily Werewolf"
+	echo "Distribuição Ubuntu 16.04 Xenial Xerus"
 	echo
 	echo -e "\033[04;32mProgramas que serão instalados\033[0m"
-	echo -e "Libreoffice (Versão mais nova)\nGoogle Chrome\nUnity Tweak Tool\nJava (Web/JDK)\nSimple Screen Recorder\nVLC Player\nAudacious Player\nBleachbit\nGimp\nwine1.6\nCodecs (muito codecs =D)\n"
+	echo -e "Libreoffice 5.1\nGoogle Chrome\nUnity Tweak Tool\nJava (Web/JDK)\nSimple Screen Recorder\nVLC Player\nAudacious Player\nBleachbit\nGimp\nwine1.8\nCodecs (muito codecs =D)\n"
 	echo
 	sleep 3
 
@@ -518,7 +515,7 @@ elif [[ $verificadistro == "DISTRIB_ID=Ubuntu" ]] && [[ $verificaversao == "DIST
 		case $escolha in
 			S|s) echo
 				testaconexao
-				ubuntu1510
+				ubuntu1604
 				;;
 			N|n) echo
 				echo Finalizando script
