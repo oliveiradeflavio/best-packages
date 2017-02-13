@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-#2015-2016
+#2015 - ultima atualização 13/02/2017
 #instalação de programas automáticos
 #
 #por Flávio Oliveira
 #https://github.com/oliveiradeflavio
 #http://youtube.com/flaviodicas
 #http://flaviodeoliveira.com.br
-#oliveiradeflavio@gmail.com
+
 
 if [[ `id -u` -ne 0 ]]; then
 	echo
@@ -156,7 +156,7 @@ apt-get update | pv -W > /dev/null ; apt-get dist-upgrade -y | pv -W > /dev/null
 clear
 	sleep 2
 	echo "Instalando Pacote de Multimedia (Codecs)"
-apt-get install ubuntu-restricted-extras faac faad ffmpeg gstreamer0.10-ffmpeg flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools libavcodec-extra-54 libavformat-extra-54 easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 libxine1 libxine1-bin libxine1-ffmpeg libxine1-misc-plugins libxine1-plugins libxine1-x nautilus-script-audio-convert nautilus-scripts-manager tagtool -y --force-yes
+apt-get install ubuntu-restricted-extras faac faad ffmpeg gstreamer0.10-ffmpeg flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools libavcodec-extra-54 libavformat-extra-54 easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 libxine1 libxine1-bin libxine1-ffmpeg libxine1-misc-plugins libxine1-plugins libxine1-x nautilus-script-audio-convert nautilus-scripts-manager tagtool -y
 	echo
 /usr/share/doc/libdvdread4/install-css.sh
 	echo
@@ -194,7 +194,7 @@ ubuntu1604()
 
 		echo "Adicionando os PPA's para instalação"
 		echo
-	if [ -e "$DIR libreoffice-ubuntu-libreoffice-5-1-xenial.list" ]; then
+	if [ -e "$DIR libreoffice-ubuntu-libreoffice-5-3-xenial.list" ]; then
 		echo "Sistema já contém o PPA LIBREOFFICE"
 		sleep 1
 	else
@@ -258,7 +258,7 @@ ubuntu1604()
 	clear
 	sleep 2
 	echo "Instalando Pacote de Multimedia (Codecs)"
-	apt-get install ubuntu-restricted-extras faac faad ffmpeg flac icedax id3v2 lame libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools easytag gnome-icon-theme-full gxine id3tool libmozjs185-1.0 libopusfile0 browser-plugin-vlc quicktime-utils -y --force-yes
+	apt-get install ubuntu-restricted-extras faac faad ffmpeg flac icedax id3v2 lame libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar rar unrar unace-nonfree sharutils uudeview mpack cabextract libdvdread4 libav-tools gxine id3tool libmozjs185-1.0 libopusfile0 browser-plugin-vlc quicktime-utils frei0r-plugins -y
 	echo
 	clear
 	sleep 3
@@ -310,9 +310,9 @@ else
 	if uname -m | grep '64' ; then
 		echo "Baixando o Virtualbox 64bits e a extensão para USB"
 		echo
-		wget -b http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-Linux_amd64.run -O virtualbox64.run &&
+		wget -b http://download.virtualbox.org/virtualbox/5.1.14/VirtualBox-5.1.14-112924-Linux_amd64.run -O virtualbox64.run &&
 PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
-		wget -b http://download.virtualbox.org/virtualbox/5.0.16/Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack	 &&
+		wget -b http://download.virtualbox.org/virtualbox/5.1.14/Oracle_VM_VirtualBox_Extension_Pack-5.1.14-112924.vbox-extpack	 &&
 PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 		clear
 		echo "Instalando ..."
@@ -323,9 +323,9 @@ PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 	else
 		echo "Baixando o Virtualbox 32bits e a extensão para USB"
 		echo
-		wget -b http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-Linux_x86.run -O virtualbox32.run &&
+		wget -b http://download.virtualbox.org/virtualbox/5.1.14/VirtualBox-5.1.14-112924-Linux_x86.run -O virtualbox32.run &&
 PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
-		wget -b http://download.virtualbox.org/virtualbox/5.0.16/Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack &&
+		wget -b http://download.virtualbox.org/virtualbox/5.1.14/Oracle_VM_VirtualBox_Extension_Pack-5.1.14-112924.vbox-extpack &&
 PID=$(pidof wget) && tail -f wget-log --pid=$PID ; rm wget-log ; sleep 2
 		clear
 		echo "Instalando ..."
@@ -384,9 +384,9 @@ echo ; sleep 2
 		echo "Você já possui o programa"
 	else
 		echo "Instalando ..."
-		apt-add-repository ppa:sunab/kdenlive-svn -y
+		apt-add-repository ppa:kdenlive/kdenlive-stable -y
 		apt-get update 1>/dev/null 2>/dev/stdout
-		apt-get install kdenlive kde-workspace-data kde-runtime -y | pv -W > /dev/null
+		apt-get install kdenlive kde-runtime -y | pv -W > /dev/null
 	fi
 sleep 3
 clear
@@ -477,12 +477,12 @@ if [[ $verificadistro == "DISTRIB_ID=Ubuntu" ]] && [[ $verificaversao == "DISTRI
 				verifica
 				;;
 		esac
-elif [[ $verificadistro == "DISTRIB_ID=LinuxMint" ]] && [[ "$verificaversao" == "DISTRIB_RELEASE=17.3" ]]; then
+elif [[ $verificadistro == "DISTRIB_ID=LinuxMint" ]] && [[ "$verificaversao" == "DISTRIB_RELEASE=18.1" ]]; then
 	echo
-	echo "Distribuição Linux Mint 17.3 Rosa"
+	echo "Distribuição Linux Mint 18.1 Serena"
 	echo
 	echo -e "\033[04;32mProgramas que serão instalados\033[0m"
-	echo -e "Libreoffice (Versão mais nova)\nGoogle Chrome\nJava (Web/JDK)\nFF Multi Converter\nSimple Screen Recorder\nUbuntu-Tweak\nVLC Player\nAudacious Player\nBleachbit\nGimp\nwine1.7\nCodecs (muito codecs =D)\n"
+	echo -e "Libreoffice 5.3\nGoogle Chrome\nJava (Web/JDK)\nSimple Screen Recorder\nVLC Player\nAudacious Player\nBleachbit\nGimp\nwine1.8\nCodecs (muito codecs =D)\n"
 	echo
 	sleep 3
 
@@ -490,7 +490,7 @@ elif [[ $verificadistro == "DISTRIB_ID=LinuxMint" ]] && [[ "$verificaversao" == 
 		case $escolha in
 			S|s) echo
 				testaconexao
-				ubuntu1404
+				ubuntu1604
 				;;
 			N|n) echo
 				echo Finalizando script
@@ -722,13 +722,13 @@ clear
 	echo "O script surgiu nas minhas formatações e instalações do sistema Ubuntu e derivados. Para agilizar todo o processo de instalação de PPA's e programas padrões para usuários iniciantes. Foi daí que surgiu a idéia do script. Alguns programas foram sugestões de usuários e inscritos do meu canal no Youtube. Agradeço e eles por deixar um tempo para contribuir com esse script... Agradeço também a minha companheira Talita por colaborar também com esse script =D"
 	echo
 	echo "Caso você queira deixar alguma modificação, envie para o seguinte email:"
-	echo "email: oliveiradeflavio@gmail.com"
+	echo "email: contato@flaviodeoliveira.com.br"
 	echo
 	echo -e "Quer conhecer um pouco mais sobre meus projetos? Acesse os link's abaixo =D\nValeu e Obrigado\n"
 	echo -e "http://youtube.com/flaviodicas\nhttp://www.flaviodeoliveira.com.br\nhttps://github.com/oliveiradeflavio"
 	echo
 	echo "Flávio Oliveira"
-	echo "data: 10/11/2015"
+	echo "data: 10/11/2015 - Ultima Atualização: 13/02/2017"
 	echo
 	echo "m) Menu Principal"
 	echo "s) Sair"
