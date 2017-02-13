@@ -6,17 +6,17 @@ O script tem como função principal instalar PPA's de programas que são básic
 
 Em um outro módulo do script, você conseguirá também fazer uma limpeza de arquivos inúteis que estão no sistema e também conseguirá fazer uma otimização básica em algumas configurações para melhorar o sistema em si.
 
-Inicialmente o script tem combatibilidade com o Ubuntu versão 14.04 32 e 64 bits, 15.10 32 e 64 bits e com o Linux Mint 17.2 32 e 64 bits.
+Inicialmente o script tem combatibilidade com o Ubuntu versão 14.04 32 e 64 bits, 16.04 32 e 64 bits e com o Linux Mint 18.1 32 e 64 bits.
 
 Alguns programas extra foram sugestões que foram enviadas por usuários e inscritos no meu canal no Youtube. Caso tenha curiosidade, acesse: http://youtube.com/flaviodicas
 
 Abaixo um lista dos programas que estão disponíveis no script:
 
-    Libreoffice (versão mais atualizada)
+    Libreoffice 5.3
     FF Multi Converter (conversor de arquivos)
     Simple Screen Recorder (gravação de tela)
-    Ubuntu Tweak (modificação do sistema)
-    Unity Tweak Tool (modificação do sistema)
+    Ubuntu Tweak (modificação do sistema) #Removi do Sistema pois já temos o Bleachbit
+    Unity Tweak Tool (modificação do sistema) 
     Audacious Player (player de música)
     VLC Player (player de vídeos)
     Bleachbit (ccleaner do Linux)
@@ -55,4 +55,4 @@ Execute como root:
 Encontrou algum problema na instalação, tem algum programa que acha essencial ou quer melhorar esse script?
 
 Entre com contato:
-oliveiradeflavio@gmail.com
+www.flaviodeoliveira.com.br
