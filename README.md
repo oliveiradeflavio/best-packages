@@ -52,7 +52,5 @@ Execute como root:
     #./nomedoarquivo.sh ou 
     $sudo ./nomedoarquivo.sh
 
-Encontrou algum problema na instalação, tem algum programa que acha essencial ou quer melhorar esse script?
 
-Entre com contato:
-www.flaviodeoliveira.com.br
+
