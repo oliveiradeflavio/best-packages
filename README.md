@@ -97,7 +97,7 @@ Veja os [problemas abertos] (https://github.com/oliveiradeflavio/best-packages/i
 
 Flávio Oliveira - [site](http://www.flaviodeoliveira.com.br) - fl.deoliveira@hotmail.com
 
-Link do Repositório: [https://github.com/oliveiradeflavio/python](https://github.com/oliveiradeflavio/pythone)
+Link do Repositório: [https://github.com/oliveiradeflavio/best-packages](https://github.com/oliveiradeflavio/best-packages)
 
 
 
