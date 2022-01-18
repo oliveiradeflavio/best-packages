@@ -95,7 +95,7 @@ Veja os [problemas abertos] (https://github.com/oliveiradeflavio/best-packages/i
 <!-- CONTACT -->
 ## Contato
 
-Flávio Oliveira - [site](http://www.flaviodeoliveira.com.br) - fl.deoliveira@hotmail.com
+Flávio Oliveira - [LinkedIn](http://www.linkedin.com/in/fladoliveira)
 
 Link do Repositório: [https://github.com/oliveiradeflavio/best-packages](https://github.com/oliveiradeflavio/best-packages)
 
