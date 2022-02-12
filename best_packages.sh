@@ -4,9 +4,6 @@
 #
 #por Flávio Oliveira
 #https://github.com/oliveiradeflavio
-#http://youtube.com/flaviodicas
-#http://flaviodeoliveira.com.br
-
 
 if [[ `id -u` -ne 0 ]]; then
 	echo
@@ -721,11 +718,8 @@ sobre()
 clear
 	echo "O script surgiu nas minhas formatações e instalações do sistema Ubuntu e derivados. Para agilizar todo o processo de instalação de PPA's e programas padrões para usuários iniciantes. Foi daí que surgiu a idéia do script. Alguns programas foram sugestões de usuários e inscritos do meu canal no Youtube. Agradeço e eles por deixar um tempo para contribuir com esse script... Agradeço também a minha companheira Talita por colaborar também com esse script =D"
 	echo
-	echo "Caso você queira deixar alguma modificação, envie para o seguinte email:"
-	echo "email: contato@flaviodeoliveira.com.br"
-	echo
-	echo -e "Quer conhecer um pouco mais sobre meus projetos? Acesse os link's abaixo =D\nValeu e Obrigado\n"
-	echo -e "http://youtube.com/flaviodicas\nhttp://www.flaviodeoliveira.com.br\nhttps://github.com/oliveiradeflavio"
+	echo -e "Quer conhecer um pouco mais sobre meus projetos? Acesse o link abaixo =D\nValeu e Obrigado\n"
+	echo -e "https://github.com/oliveiradeflavio"
 	echo
 	echo "Flávio Oliveira"
 	echo "data: 10/11/2015 - Ultima Atualização: 13/02/2017"
